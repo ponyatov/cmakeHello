@@ -2,7 +2,8 @@
 MODULE = $(notdir $(CURDIR))
 
 # tool
-CF = clang-format -style=file -i
+CF    = clang-format -style=file -i
+CMAKE = /usr/bin/cmake
 
 # dirs
 CWD = $(CURDIR)
@@ -16,8 +17,7 @@ F += $(wildcard lib/$.ini) $(wildcard lib/$.f)
 # all
 .PHONY: all run
 all:
-run:
-	cmake -S $(CWD) -B $(TMP)/$(MODULE)
+run: disco
 
 # format
 .PHONY: format
@@ -35,3 +35,10 @@ ANEG = cmake/arm-none-eabi-gcc.cmake
 diff: $(ANEG).patch
 $(ANEG).patch: $(GANE) $(ANEG)
 	diff -u $^ > $@ ; diff --color -u $^
+
+.PHONY: disco
+disco:
+	echo rm -rf $(TMP)/$@
+	$(CMAKE) -DCMAKE_VERBOSE_MAKEFILE=ON \
+		-S$(CWD)/hw/STM32F407G-DISC1 -B$(TMP)/$@
+	$(CMAKE) --build $(TMP)/$@

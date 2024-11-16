@@ -28,3 +28,10 @@ tmp/format_cpp: $(C) $(H)
 .PHONY: doxy
 doxy: .doxygen
 	rm -rf doc/html ; doxygen $< 1>/dev/null
+
+GANE = hw/STM32F407G-DISC1/cmake/gcc-arm-none-eabi.cmake
+ANEG = cmake/arm-none-eabi-gcc.cmake
+.PHONY: diff $(ANEG).patch
+diff: $(ANEG).patch
+$(ANEG).patch: $(GANE) $(ANEG)
+	diff -u $^ > $@ ; diff --color -u $^

@@ -1,5 +1,5 @@
 {
-    "version": 8,
+    "version": 6,
     "configurePresets": [
         {
             "name": "common",
@@ -14,7 +14,13 @@
         {
             "name": "cortexM",
             "hidden": true,
-            "inherits": "common"
+            "inherits": "common",
+            "toolchainFile": "${sourceDir}/cmake/arm-none-eabi-gcc.cmake",
+            "cacheVariables": {
+                "WARN":       "-Wall -Wextra -Wpedantic",
+                "FSECTIONS":  "-fdata-sections -ffunction-sections",
+                "GCSECTIONS": "-Wl,--gc-sections",
+                "CMAKE_VERBOSE_MAKEFILE": true}
         },
         {
             "name": "cortexM4",
@@ -28,8 +34,7 @@
         {
             "name": "STM32F407G-DISC1",
             "inherits": "cortexM4",
-            "toolchainFile": "${sourceDir}/hw/STM32F407G-DISC1/cmake/gcc-arm-none-eabi.cmake",
-            "cacheVariables": {}
+            "cacheVariables": {"HW":"STM32F407G-DISC1","CPU":"STM32F407VGT"}
         },
         {
             "name": "linux",

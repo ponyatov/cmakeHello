@@ -25,19 +25,19 @@ target_compile_definitions(stm32cubemx INTERFACE
 
 target_include_directories(stm32cubemx INTERFACE
     ../../Core/Inc
-    /home/dponyatov/STM32/CubeMXRepo/STM32Cube_FW_F4_V1.28.1/Drivers/STM32F4xx_HAL_Driver/Inc
-    /home/dponyatov/STM32/CubeMXRepo/STM32Cube_FW_F4_V1.28.1/Drivers/CMSIS/Device/ST/STM32F4xx/Include
-    /home/dponyatov/STM32/CubeMXRepo/STM32Cube_FW_F4_V1.28.1/Drivers/CMSIS/Include
+    ../../Drivers/STM32F4xx_HAL_Driver/Inc
+    ../../Drivers/CMSIS/Device/ST/STM32F4xx/Include
+    ../../Drivers/CMSIS/Include
 )
 
 target_sources(stm32cubemx INTERFACE
     ../../Core/Src/main.c
     ../../Core/Src/gpio.c
     ../../Core/Src/stm32f4xx_it.c
-    /home/dponyatov/STM32/CubeMXRepo/STM32Cube_FW_F4_V1.28.1/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_gpio.c
-    /home/dponyatov/STM32/CubeMXRepo/STM32Cube_FW_F4_V1.28.1/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_rcc.c
-    /home/dponyatov/STM32/CubeMXRepo/STM32Cube_FW_F4_V1.28.1/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_utils.c
-    /home/dponyatov/STM32/CubeMXRepo/STM32Cube_FW_F4_V1.28.1/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_exti.c
+    ../../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_gpio.c
+    ../../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_rcc.c
+    ../../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_utils.c
+    ../../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_exti.c
     ../../Core/Src/system_stm32f4xx.c
     ../../Core/Src/sysmem.c
     ../../Core/Src/syscalls.c

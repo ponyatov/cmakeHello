@@ -1,7 +1,7 @@
-*.patch: STM32F407VGTx_FLASH.ld
+STM32F407VGTx_FLASH.ld.orig: STM32F407VGTx_FLASH.ld
 	patch --binary STM32F407VGTx_FLASH.ld 0001-STM32F407VGTx_FLASH.ld.patch
 	patch --binary STM32F407VGTx_FLASH.ld 0002-STM32F407VGTx_FLASH.ld.patch
 	patch --binary STM32F407VGTx_FLASH.ld 0003-STM32F407VGTx_FLASH.ld.patch
 	patch --binary STM32F407VGTx_FLASH.ld 0004-STM32F407VGTx_FLASH.ld.patch
 	patch --binary STM32F407VGTx_FLASH.ld 0005-STM32F407VGTx_FLASH.ld.patch
-	rm $<.*
+	touch $@

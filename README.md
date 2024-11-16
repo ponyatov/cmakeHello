@@ -1,0 +1,2 @@
+# cmakeHello
+CMake workout

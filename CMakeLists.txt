@@ -17,11 +17,17 @@ file(GLOB_RECURSE C
 file(GLOB_RECURSE H
     "${INC}/*.h*"
     "${CWD}/hw/${HW}/Core/Inc/*.h*"
+    "${CWD}/hw/${HW}/Drivers/CMSIS/Include/*.h*"
+    "${CWD}/hw/${HW}/Drivers/CMSIS/Device/ST/STM32F4xx/Include/*.h*"
+    "${CWD}/hw/${HW}/Drivers/STM32F4xx_HAL_Driver/Inc/*.h*"
 )
 
 include_directories(
     ${INC} ${TMP}
     "${CWD}/hw/${HW}/Core/Inc"
+    "${CWD}/hw/${HW}/Drivers/CMSIS/Include"
+    "${CWD}/hw/${HW}/Drivers/CMSIS/Device/ST/STM32F4xx/Include"
+    "${CWD}/hw/${HW}/Drivers/STM32F4xx_HAL_Driver/Inc"
 )
 
 add_compile_definitions(

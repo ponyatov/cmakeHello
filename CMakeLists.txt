@@ -13,6 +13,7 @@ file(GLOB_RECURSE A
 file(GLOB_RECURSE C
     "${SRC}/*.c*"
     "${CWD}/hw/${HW}/Core/Src/*.c*"
+    "${CWD}/hw/${HW}/Drivers/STM32F4xx_HAL_Driver/Src/*.c*"
 )
 file(GLOB_RECURSE H
     "${INC}/*.h*"

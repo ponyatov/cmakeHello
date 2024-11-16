@@ -1,0 +1,26 @@
+diff --git a/hw/STM32F407G-DISC1/STM32F407VGTx_FLASH.ld b/hw/STM32F407G-DISC1/STM32F407VGTx_FLASH.ld
+index a6e6fe4..a2c1203 100644
+--- a/hw/STM32F407G-DISC1/STM32F407VGTx_FLASH.ld
++++ b/hw/STM32F407G-DISC1/STM32F407VGTx_FLASH.ld
+@@ -53,7 +53,7 @@
+ /* Highest address of the user mode stack */
+-_estack = ORIGIN() + LENGTH();    /* end of RAM */
++_estack = ORIGIN(RAM) + LENGTH(RAM);    /* end of RAM */
+@@ -144,7 +144,7 @@ SECTIONS
+     _edata = .;        /* define a global symbol at data end */
+-  } > AT> FLASH
++  } >RAM AT> FLASH
+@@ -180,10 +180,10 @@ SECTIONS
+     __bss_end__ = _ebss;
+-  } >
++  } >RAM
+ 
+   /* User_heap_stack section, used to check that there is enough RAM left */
+-  ._user_heap_stack :
++  ._user_heap_stack (NOLOAD):
+@@ -191,5 +191,5 @@ SECTIONS
+     . = . + _Min_Heap_Size;
+     . = . + _Min_Stack_Size;
+     . = ALIGN(8);
+-  } >
++  } >RAM

@@ -5,10 +5,31 @@
             "name": "common",
             "hidden": true,
             "binaryDir": "${sourceDir}/tmp/${presetName}",
+            "generator": "Unix Makefiles",
             "cacheVariables": {
                 "CMAKE_INSTALL_PREFIX": "${sourceDir}/bin/${presetName}",
                 "CMAKE_BUILD_TYPE": "Debug"
             }
+        },
+        {
+            "name": "cortexM",
+            "hidden": true,
+            "inherits": "common"
+        },
+        {
+            "name": "cortexM4",
+            "hidden": true,
+            "inherits": "cortexM",
+            "cacheVariables": {
+                "MCPU": "-mcpu=cortex-m4",
+                "MFPU": "-mfpu=fpv4-sp-d16 -mfloat-abi=hard"
+            }
+        },
+        {
+            "name": "STM32F407G-DISC1",
+            "inherits": "cortexM4",
+            "toolchainFile": "${sourceDir}/hw/STM32F407G-DISC1/cmake/gcc-arm-none-eabi.cmake",
+            "cacheVariables": {}
         },
         {
             "name": "linux",
@@ -16,8 +37,7 @@
             "description": "Using compilers: C = /usr/bin/gcc, CXX = /usr/bin/g++",
             "toolchainFile": "${sourceDir}/cmake/x86_64-linux-gnu.cmake",
             "inherits": "common",
-            "cacheVariables": {
-            }
+            "cacheVariables": {}
         }
     ]
 }

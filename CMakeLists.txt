@@ -12,3 +12,5 @@ file(GLOB_RECURSE H "${INC}/*.h*")
 include_directories(${INC} ${TMP})
 
 add_executable(${CMAKE_PROJECT_NAME} ${C} ${H})
+
+message("-- toolchain: " ${CMAKE_TOOLCHAIN_FILE})

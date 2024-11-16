@@ -1,0 +1,8 @@
+--- STM32F407VGTx_FLASH.ld	2024-11-17 01:36:51.867898306 +0400
++++ STM32F407VGTx_FLASH.ld.fix	2024-11-17 01:38:53.399896940 +0400
+@@ -146,4 +146,4 @@
+     _edata = .;        /* define a global symbol at data end */
+-  } > AT> FLASH
++  } >RAM AT> FLASH
+ 
+   _siccmram = LOADADDR(.ccmram);

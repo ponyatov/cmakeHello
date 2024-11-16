@@ -46,4 +46,7 @@
         "editor.defaultFormatter": "xaver.clang-format",
         "editor.formatOnSave":     false
     },
+
+    // cmake
+    "cmake.configureArgs": ["-DHW=STM32F407G-DISC1"]
 }

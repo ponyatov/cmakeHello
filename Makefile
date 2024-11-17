@@ -47,7 +47,15 @@ disco:
 		-S$(CWD) -B$(TMP)/$(HW) --preset=$(HW)
 	$(CMAKE) --build $(TMP)/$(HW)
 
+FLASH = 0x08000000
+
 .PHONY: gdb
 gdb: $(TMP)/$(HW)/$(MODULE).elf
 	st-util --listen_port 12345 &
 	gdb-multiarch -q -x .gdbinit tmp/STM32F407G-DISC1/hello.elf
+
+.PHONY: flash
+flash: $(TMP)/$(HW)/$(MODULE).bin
+	st-flash --connect-under-reset write $< $(FLASH)
+%.bin: %.elf
+	arm-none-eabi-objcopy -O binary $< $@

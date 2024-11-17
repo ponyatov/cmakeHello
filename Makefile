@@ -1,6 +1,10 @@
 # var
 MODULE = $(notdir $(CURDIR))
 
+# cross
+HW  = STM32F407G-DISC1
+CPU = STM32F407VGT
+
 # tool
 CF    = clang-format -style=file -i
 CMAKE = /usr/bin/cmake
@@ -38,7 +42,9 @@ $(ANEG).patch: $(GANE) $(ANEG)
 
 .PHONY: disco
 disco:
-	echo rm -rf $(TMP)/$@
+	rm -rf $(TMP)/$(HW)
 	$(CMAKE) -DCMAKE_VERBOSE_MAKEFILE=ON \
-		-S$(CWD)/hw/STM32F407G-DISC1 -B$(TMP)/$@
-	$(CMAKE) --build $(TMP)/$@
+		-S$(CWD) -B$(TMP)/$(HW) --preset=$(HW)
+	$(CMAKE) --build $(TMP)/$(HW)
+
+.PHONY: tmp/

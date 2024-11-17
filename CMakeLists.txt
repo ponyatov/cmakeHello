@@ -1,8 +1,9 @@
 cmake_minimum_required(VERSION 3.22)
-
-project(hello LANGUAGES C CXX ASM)
+get_filename_component(PROJECT_NAME ${CMAKE_SOURCE_DIR} NAME_WE)
+project(${PROJECT_NAME} LANGUAGES C CXX ASM)
 
 set(CWD ${CMAKE_SOURCE_DIR})
+set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CWD}/cmake)
 set(INC ${CWD}/inc)
 set(SRC ${CWD}/src)
 set(TMP ${CWD}/tmp)
@@ -52,3 +53,22 @@ add_compile_definitions(
 message("-- toolchain: " ${CMAKE_TOOLCHAIN_FILE})
 message("--   startup: " ${A})
 add_executable(${CMAKE_PROJECT_NAME} ${C} ${H} ${A})
+
+# https://github.com/ryankurte/stm32-base/blob/master/toolchain/stlink.cmake
+
+set(TARGET_ELF ${CMAKE_CURRENT_BINARY_DIR}/${CMAKE_PROJECT_NAME}.elf)
+set(GDB_PORT 12345)
+
+add_custom_target(erase
+	COMMAND st-flash erase
+	)
+
+add_custom_target(debug-server
+	COMMAND st-util --listen_port ${GDB_PORT}
+	DEPENDS ${TARGET_ELF}
+	)
+
+add_custom_target(debug
+    COMMAND gdb-multiarch -tui -command ${CWD}/.gdb ${TARGET_ELF}
+    DEPENDS ${TARGET_ELF}
+    )

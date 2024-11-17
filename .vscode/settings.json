@@ -41,12 +41,14 @@
     "git.enabled": false,
     "terminal.integrated.copyOnSelection": true,
 
-    // C++
-    "[cpp]": {
-        "editor.defaultFormatter": "xaver.clang-format",
-        "editor.formatOnSave":     false
-    },
+    // clang-format
+    "clang-format.executable":     "clang-format",
+    "clang-format.fallbackStyle":  "Google",
+    "clang-format.style":          "file",
 
-    // cmake
-    "cmake.configureArgs": ["-DHW=STM32F407G-DISC1"]
+    // C++
+    "[c,cpp]": {
+        "editor.defaultFormatter": "xaver.clang-format",
+        "editor.formatOnSave":     true
+    },
 }

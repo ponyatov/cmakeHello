@@ -1,4 +1,4 @@
-#include "hello.hpp"
+#include "hello.h"
 
 #ifdef __linux__
 int main(int argc, char *argv[]) {  //

@@ -47,7 +47,11 @@
     "clang-format.style":          "file",
 
     // C++
-    "[c,cpp]": {
+    "[c]": {
+        "editor.defaultFormatter": "xaver.clang-format",
+        "editor.formatOnSave":     true
+    },
+    "[cpp]": {
         "editor.defaultFormatter": "xaver.clang-format",
         "editor.formatOnSave":     true
     },
